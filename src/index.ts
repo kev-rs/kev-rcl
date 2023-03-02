@@ -44,12 +44,4 @@ const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
   });  
 };
 
-// const pokeApi = createApi<Valid>(API_URL, POKE_API_METHODS);
-// const res = await pokeApi.pokemon('asd', { limit: 3, offset: 2 })
-// const res = await pokeApi.pokemon({ limit: 2, offset: 2 })
-
-
-// console.log(res);
-// console.log(res);
-
 export { createApi, sum };
