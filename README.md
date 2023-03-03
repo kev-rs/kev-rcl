@@ -17,6 +17,21 @@ const bulbasaur = await pokeApi.pokemon('get_by_id')('1')({ select: { name: true
 
 ## Example
 ```
+  import { pokeApi } from 'kev-rcl-tsx'
+
+  # get all pokemons
+  const res = await pokeApi.pokemon('get_all')({ limit: 2, offset: 2 });
+
+  # get pokemon by id
+  const res = await pokeApi.pokemon('get_by_id')(1);
+
+  # get pokemon by its name
+  const res = await pokeApi.pokemon('get_by_id')('bulbasaur');
+```
+
+# __DEPRECATED__
+
+```
 import { pokeApi } from 'kev-rcl-tsx'
     
 # get all pokemons
