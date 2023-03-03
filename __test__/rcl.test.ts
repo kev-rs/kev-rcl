@@ -1,4 +1,4 @@
-import { pokeApi } from '../src/index'
+import { pokeApi } from 'kev-rcl-tsx'
 import { describe, expect, test } from 'vitest';
 
 describe('createApi', () => {
