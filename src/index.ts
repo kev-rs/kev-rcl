@@ -1,3 +1,5 @@
+import type { Main, Pokemon } from './types';
+
 const sum = (a: number, b: number) => {
   if ('development' === process.env.NODE_ENV) {
     console.log('boop');
@@ -5,21 +7,15 @@ const sum = (a: number, b: number) => {
   return a + b;
 };
 
-
-// const API_URL = 'https://pokeapi.co/api/v2';
-
 const POKE_API_METHODS = ['pokemon', 'type', 'ability'] as const;
 type ValidMethods = typeof POKE_API_METHODS[number];
 
-// interface Valid {
-//   pokemon: string;
-//   type: string;
-//   ability: string;
-// };
+type Params = Record<'limit' | 'offset', StrOrInt>;
 
-type Args = string | Record<'limit' | 'offset', StrOrInt>;
+type Props<T> = {
+  [K in keyof T]: <S extends string | Params>(args: S) => Promise<S extends string ? Main : Pokemon>;
+};
 
-type Props<T> = { [K in keyof T]: (args: Args) => any };  
 
 type StrOrInt = string | number;
 
@@ -35,13 +31,25 @@ const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
         
         const res = await fetch(url.toString());
         if (!res.ok) return Promise.reject({ error: `Something wrong happened with ${url}`});
-        const pokemon = await res.json();        
-
+        const pokemon = await res.json();
+        
         if (typeof q !== 'string') return pokemon;
         return { name: pokemon.name }
       }
     }
   });  
 };
+
+interface Valid {
+  pokemon: string;
+  type: string;
+}
+
+const pokeApi = createApi<Valid>('https://pokeapi.co/api/v2', POKE_API_METHODS);
+
+const res = pokeApi.pokemon('1').then(res => {
+  // res
+  console.log(res)
+});
 
 export { createApi, sum };
