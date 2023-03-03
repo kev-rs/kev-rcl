@@ -10,8 +10,13 @@ type Props<T> = {
   [K in keyof T]: <S extends string | Params>(args: S) => Promise<S extends string ? Main : Pokemon>;
 };
 
-
 type StrOrInt = string | number;
+
+function isPokemon(q: unknown): q is Pokemon {
+  if (q !== null && typeof q === 'object') return true;
+
+  return false;
+}
 
 const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
   return new Proxy<Props<T>>({} as Props<T>, {
@@ -27,9 +32,10 @@ const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
         const res = await fetch(url.toString());
         if (!res.ok) return Promise.reject({ error: `Something wrong happened with ${url}`});
         const pokemon = await res.json();
+
+        if (isPokemon(pokemon)) return pokemon
         
-        if (typeof q !== 'string') return pokemon;
-        return { name: pokemon.name }
+        return pokemon as Main;
       }
     }
   });  

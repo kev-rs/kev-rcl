@@ -5,7 +5,7 @@ Hi guys, I'm just a beginner, and this is the first library I create and still i
 ## Features I will add later
 - Auto caching.
 - A doc that explains how to use it.
-- A easier way to use it and with more options like:
+- An easier way to use it and with more options like:
 ```
 # Here you get a pokemon by its id and then u can also select what you want to receive like GraphQL or tRPC.
 
