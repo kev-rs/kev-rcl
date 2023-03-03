@@ -1,6 +1,6 @@
 # Rest Client Library
 
-This is a rest client library for the pokemon rest api. It was built in typescript so it's completely type safety.
+Hi guys, I'm just a beginner, and this is the first library I create, it's a rest client library for the pokemon rest api using a JavaScript Proxy. It was built in typescript so it's completely type safety. You can collaborate on the project if you want. Leet me see your feedback :)
 
 ## Example
 ```

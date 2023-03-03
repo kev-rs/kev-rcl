@@ -1,5 +1,6 @@
-import type { Main, Pokemon } from './types';
+import type { Main, PokeMethods, Pokemon } from './types';
 
+const API_URL = 'https://pokeapi.co/api/v2';
 const POKE_API_METHODS = ['pokemon', 'type', 'ability'] as const;
 type ValidMethods = typeof POKE_API_METHODS[number];
 
@@ -34,4 +35,6 @@ const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
   });  
 };
 
-export { createApi };
+const pokeApi = createApi<PokeMethods>(API_URL, POKE_API_METHODS);
+
+export { pokeApi };
