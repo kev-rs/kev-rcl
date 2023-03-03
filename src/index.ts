@@ -40,16 +40,4 @@ const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
   });  
 };
 
-interface Valid {
-  pokemon: string;
-  type: string;
-}
-
-const pokeApi = createApi<Valid>('https://pokeapi.co/api/v2', POKE_API_METHODS);
-
-const res = pokeApi.pokemon('1').then(res => {
-  // res
-  console.log(res)
-});
-
 export { createApi, sum };
