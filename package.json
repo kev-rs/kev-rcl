@@ -3,6 +3,11 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kev-tsx/kev-rcl.git"
+  },
+  "description": "A rest client library for the pokemon api -> https://pokeapi.co/",
   "files": [
     "dist",
     "src"
@@ -33,7 +38,7 @@
     "trailingComma": "es5"
   },
   "name": "kev-rcl-tsx",
-  "author": "kev",
+  "author": "Kev <kevbs.jsx@gmail.com> (https://kevbs.com)",
   "module": "dist/kev-rcl.esm.js",
   "size-limit": [
     {

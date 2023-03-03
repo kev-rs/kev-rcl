@@ -1,6 +1,6 @@
 # Rest Client Library
 
-This is a rest client library for the pokemon rest api. It's completely type safety because it was built in typescript.
+This is a rest client library for the pokemon rest api. It was built in typescript so it's completely type safety.
 
 ## Example
 ```
