@@ -1,12 +1,5 @@
 import type { Main, Pokemon } from './types';
 
-const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
-  }
-  return a + b;
-};
-
 const POKE_API_METHODS = ['pokemon', 'type', 'ability'] as const;
 type ValidMethods = typeof POKE_API_METHODS[number];
 
@@ -22,6 +15,7 @@ type StrOrInt = string | number;
 const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
   return new Proxy<Props<T>>({} as Props<T>, {
     get: (_, prop: ValidMethods) => {
+      
       return async (q: string | Record<string, string>) => {
         if (!validProps.includes(prop)) return Promise.reject({ error: `Invalid method - ${prop}` })
         
@@ -40,4 +34,4 @@ const createApi = <T>(api_url: string, validProps: readonly ValidMethods[]) => {
   });  
 };
 
-export { createApi, sum };
+export { createApi };
